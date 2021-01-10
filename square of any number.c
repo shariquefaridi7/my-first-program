@@ -9,7 +9,7 @@ void main()
 	int a, square;
       printf("enter the value of a = ");
         scanf("%d",&a);
-     square=sqrt(a);
+     square=a*a;
 	 printf("square of a = %d",square);
              
 }
