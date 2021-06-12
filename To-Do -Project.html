@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>To-Do-Projct</title>
+	<meta charset="utf-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	 <style >
+	 	#para1{
+	 		margin-top: 20px;
+	 		border:2px solid black ;
+                  border-radius: 10px;
+        
+	 	}
+	 	.color{
+	 		background: skyblue;
+	 	}
+	 	#myId{
+	 		background: #151B54;
+	 	}
+
+	 	#myInput{
+	 		margin-left: 40%;
+	 	}
+
+	 	h2{
+	 		margin-top: 30px;
+	 	}
+
+	 </style>
+  
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+<div id="myId" class="header">
+	<h2 style="color:white; margin-left: 450px;margin-bottom: 50px; padding-top: 50px;">My To Do List</h2>
+	<input type="text" id="myInput" placeholder="Title...">
+	<span><button  id ="btn" class="addBtn">+</button></span>
+	<div id="para1" >
+	
+		
+	</div>
+</div>
+</div>
+</div>
+</div>
+<script >
+  
+    var myInput=document.getElementById("myInput");
+    var para1=document.getElementById("para1");
+    var btn=document.getElementById("btn");
+    para1.classList.add("color");
+	var a;
+	btn.addEventListener("click" ,function(){
+    var para=document.createElement('h6');
+    var line=document.createElement("hr");
+    var cross=document.createTextNode("X");
+  
+
+   
+	para.innerText=myInput.value;
+		para1.appendChild(para)
+	para.appendChild(line);
+   //  li.appendChild(para);
+
+          
+     
+
+     myInput.value=" ";  
+       para.addEventListener("click",function(){
+      para.style.textDecoration="line-through";
+      para.addEventListener("click",()=>{
+
+      	para1.removeChild(para);
+      })
+
+   })
+   
+    
+	});
+	
+ 
+	
+
+
+</script>
+</body>
+</html>
