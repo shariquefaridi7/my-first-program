@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>validation-form</title>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style >
+	#outlook{
+
+		border: 3px solid black;
+		border-radius: 10px;
+		padding: 30px;
+	    background-color: rgb(0, 102, 102);
+	}
+
+
+
+
+</style>
+
+
+
+  </head>
+
+ <body>
+<div class="container"><br>
+	<h1 class="text-dark text-center font-weight-bold"><u><i>Validation-form</i></u></h1>
+<br>
+<div class="row ">
+	<div class="col-4 " >
+		<div id="outlook">
+		<form action="#" name="validation-form">
+    <div class="form-group" style="margin-top: -15px;">
+      <label for="usr"><b>Name</b></label>
+      <input type="text" class="form-control" id="usr" name="username" placeholder="Enter name" autocomplete="off">
+      <span id="user" class="text-danger font-weight-bold"></span>
+    </div>
+    <div class="form-group">
+    	<label for="Number"><b>Mobile number</b></label>
+    	<input type="text" name="phoner" class="form-control" id="Number" autocomplete="off">
+    	<span id="mobile" class="text-danger font-weight-bold"></span>
+    </div>
+    <div  class="form-group">
+      <label for="pwd"><b>  Password</b></label>
+      <input type="text" class="form-control" id="pwd" name="password" placeholder="Enter Password" autocomplete="off">
+      <span id="Password" class="text-danger font-weight-bold"></span>
+    </div>
+     <div  class="form-group">
+      <label for="conpwd"><b> Confirm Password</b></label>
+      <input type="text" class="form-control" id="conpwd" name="conpassword" placeholder="Enter Password" autocomplete="off">
+      <span id="conPassword" class="text-danger font-weight-bold"></span>
+    </div>
+    <div class="form-group">
+    	<label for="mail"><b>Email(optional)</b></label>
+    	<input type="text" name="address" class="form-control" id="mail" autocomplete="off">
+    	<span id="emailid" class="text-danger font-weight-bold"></span>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" onclick=" return validation_form()">Submit</button>
+
+  </form>
+</div>
+	</div>
+</div>	
+</div>
+
+
+
+<script>
+	
+
+	function validation_form()
+	{
+	
+	var usr=document.getElementById("usr").value;
+	var mob=document.getElementById("Number").value;
+	var pass=document.getElementById("pwd").value;
+	var conpass=document.getElementById("conpwd").value;
+    var eid=document.getElementById("mail").value;
+
+    if(usr=="")
+ { 
+ 	document.getElementById("user").innerHTML="** Please Enter the name.";
+ 	return false;
+ }
+   if( (usr.length <= 2 )|| (usr.length >= 20))
+   {
+   	 document.getElementById("user").innerHTML="** user lenght must be between 3 and 20.";
+ 	return false;
+   }
+
+   if(!isNaN(usr))
+   {
+   	document.getElementById("user").innerHTML="** Only Character is allowed.";
+ 	return false;
+   }
+   
+  
+ /*------------------mobile start--------------------------*/  
+
+  if(mob=="")
+ { 
+ 	document.getElementById("mobile").innerHTML="** Please Enter the Mobile No.";
+ 	return false;
+ }
+ if(isNaN(mob))
+ { 
+ 	document.getElementById("mobile").innerHTML="** Only Digits are allowed";
+ 	return false;
+ }
+
+ if (mob.length!=10) 
+ {
+ 	document.getElementById("mobile").innerHTML="**Mobile Number must 10 digits Only ";
+ 	return false;
+ }
+/*----------------password start------------------------------------*/
+
+
+  if(pass=="")
+ { 
+ 	document.getElementById("Password").innerHTML="** Please Enter the Password.";
+ 	return false;
+ }
+ 
+
+  if(pass.length<=7)
+ { 
+ 	document.getElementById("Password").innerHTML="**Atleast 8 Characters or longer .";
+ 	return false;
+ }
+
+  if(pass.search(/[a-z]/g)!=0)
+ { 
+ 	document.getElementById("Password").innerHTML="**First letter must be aplhabate .";
+ 	return false;
+ }
+
+  if(pass.search(/[0-9]/g)==-1)
+ { 
+ 	document.getElementById("Password").innerHTML="**Atleast 1 Number is Required .";
+ 	return false;0
+ }
+
+
+  if(pass.search(/[a-z]/g)==-1)
+ { 
+ 	document.getElementById("Password").innerHTML="**Atleast 1 alphabate is Required .";
+ 	return false;
+ }
+
+ if(pass.search(/[a-z]/g)==-1)
+ { 
+ 	document.getElementById("Password").innerHTML="**Atleast 1 LowerCase is Required .";
+ 	return false;
+ }
+
+ if(pass.search(/[A-Z]/g)==-1)
+ { 
+ 	document.getElementById("Password").innerHTML="**Atleast 1 UpperCase is Required .";
+ 	return false;
+ }
+
+ if(pass.search(/[@/#/$/&/~/!]/g)==-1)
+ { 
+ 	document.getElementById("Password").innerHTML="**Atleast 1 Special Character is Required .";
+ 	return false;
+ }
+ 
+ 
+ 
+  if(conpass=="")
+ { 
+ 	document.getElementById("conPassword").innerHTML="**Please Enter the Confirm Password.";
+ 	return false;
+ }
+
+if(pass!=conpass)
+{
+	document.getElementById("conPassword").innerHTML="**Wrong Password.";
+ 	return false;
+}
+/*------------email start----------------*/
+
+  if(eid=="")
+ { 
+ 	document.getElementById("emailid").innerHTML="** Please Enter the email id.";
+ 	return false;
+ }
+  if(eid.charAt(0)=="@")
+ { 
+ 	document.getElementById("emailid").innerHTML="** Do not write @ first in email id.";
+ 	return false;
+ }
+
+ if(eid.search("@gmail.com")==-1)
+ { 
+ 	document.getElementById("emailid").innerHTML="**  write @gmail.com  in email id.";
+ 	return false;
+ }
+ 
+}
+</script>
+</body>
+</html>
