@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz_game</title>
+	<link rel="stylesheet" type="text/css" href="Quiz-game.css">
+</head>
+<body>
+	<center><h1><i>Quiz-Game</i></h1></center>
+	<div id="card">
+		<h1 id="question">Question1</h1><br>
+		 <label id="Ans1" class="left">Option1</label>  <input type="radio" name="ans" id="ans1" class="answer"><br><br>
+		 <label id="Ans2" class="left">Option1</label>  <input type="radio" name="ans" id="ans2" class="answer"><br><br>
+		 <label id="Ans3" class="left">Option1</label>  <input type="radio" name="ans" id="ans3" class="answer"><br><br>
+		 <label id="Ans4" class="left">Option1</label>  <input type="radio" name="ans" id="ans4" class="answer"><br><br>
+		<button id="Submit" ><b>Submit</b></button><br><br>
+		<div id="Result">
+			
+		</div><br>
+		<h1><i>Create By -Mohd.Sharique</i></h1>
+	</div>
+	
+<script type="text/javascript">
+	var Questions=document.getElementById('question');
+	var Option_1=document.getElementById('Ans1');
+	var Option_2=document.getElementById('Ans2');
+	var Option_3=document.getElementById('Ans3');
+	var Option_4=document.getElementById('Ans4');
+	var Submit=document.getElementById('Submit');
+	var btn=document.querySelectorAll(".answer");
+	var scores=document.getElementById('Result');
+
+
+	var quiz=[
+      {
+      	Question:"Q1. Who Invent C language ?",
+      	Option1:"A. Dennis M. Ritchie .",
+      	Option2:"B. Bjarne Stroustrup .",
+      	Option3:"C. James Gosling .",
+      	Option4:"D. Brendan Eich .",
+      	Ans:'ans1'
+
+      },
+       {
+      	Question:"Q2. What is the Full Form of HTML ?",
+      	Option1:"A. Hyper Texts Manual Language .",
+      	Option2:"B. Hyper Textual Markup Language .",
+      	Option3:"C. Hyper Text Markup Language .",
+      	Option4:"D. Hypo Text Marks Language .",
+      	Ans:'ans3'
+
+      },
+       {
+      	Question:"Q3. What is the Full Form of Php ?",
+      	Option1:"A. Photo Home Preprosesor .",
+      	Option2:"B. Hypertext Preprocessor .",
+      	Option3:"C. Personal Home Page .",
+      	Option4:"D. Both B and C .",
+        Ans:'ans4'
+      },
+       {
+      	Question:"Q4. Who Invent javascript language ?",
+      	Option1:"A. Dennis M. Ritchie .",
+      	Option2:"B. Bjarne Stroustrup .",
+      	Option3:"C. James Gosling .",
+      	Option4:"D. Brendan Eich .",
+        Ans:'ans4'
+      },
+       {
+      	Question:"Q5. Who Invent Phython language ?",
+      	Option1:"A. Guido van Rossum .",
+      	Option2:"B. Rasmus Lerdorf .",
+      	Option3:"C. Dennis M. Ritchie .",
+      	Option4:"D. Yukihiro Matz .",
+        Ans:'ans2'
+      }
+
+	];
+	 var i=0;
+	  var Score=0;
+	 
+	   function  loadQuiz(){
+	   	 var b=quiz[i];
+         Questions.innerText=b.Question;
+         Option_1.innerText=b.Option1;
+         Option_2.innerText=b.Option2;
+         Option_3.innerText=b.Option3;
+         Option_4.innerText=b.Option4;
+
+	   };
+	   loadQuiz();
+
+	   var getcheck=()=>{
+	   	let answers;
+	   	btn.forEach((curAns) => {
+
+	   		if(curAns.checked){
+	   			answers=curAns.id;
+	   		}
+	   	})
+	   	return answers;
+	   };
+	   const delAns=()=>{
+	   	btn.forEach((curAns) => {
+
+	   			curAns.checked=false;
+	   		
+	   });
+	};
+
+
+      
+      Submit.addEventListener("click",()=>{
+         var check=getcheck();
+         
+         if (check==quiz[i].Ans)
+          {
+          	Score++;
+          }
+          delAns();
+         
+
+       i++;
+       if(i<quiz.length)
+{
+	loadQuiz();
+}
+else{
+	scores.innerHTML=`
+    <h3>You Scored ${Score}/${quiz.length} :) </h3><br> <br>
+    <button  class ="btns"onclick=location.reload()><b>Play again</b></button><br><br>
+
+	`
+	scores.classList.add("result");
+       
+}
+
+      })
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>
